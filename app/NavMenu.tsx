@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import styles from './NavMenu.module.css';
 import Image from 'next/image';
-import { SignInButton, SignOutButton } from './components/button';
-import AuthCheck from './components/AuthCheck';
+import { SignInButton, SignOutButton } from '@/components/button';
+import AuthCheck from '@/components/AuthCheck';
 
 export default function NavMenu() {
   return (
