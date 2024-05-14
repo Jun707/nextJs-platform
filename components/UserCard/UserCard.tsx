@@ -7,9 +7,10 @@ interface Props {
     name: string | null,
     age: number | null,
     image: string |null,
+    email: string | null
 }
 
-export default function UserCard({ id, name, age, image }: Props) {
+export default function UserCard({ id, name, age, image, email }: Props) {
     return (
       <div className={styles.card}>
         <img

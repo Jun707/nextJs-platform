@@ -1,12 +1,21 @@
 import { prisma } from "@/lib/prisma";
+import { getServerSession } from "next-auth";
 import { NextResponse } from 'next/server';
+import { authOptions } from "../auth/[...nextauth]/route";
 
-export async function GET(request: Request) {
+export async function PUT(req: Request) {
+    const session = await getServerSession(authOptions);
+    const currentUserEmail = session?.user?.email!;
 
-    const user = await prisma.user.findMany();
+    const data = await req.json();
+    data.age = Number(data.age);
 
-    console.log(user);
+    const user = await prisma.user.update({
+        where: {
+            email: currentUserEmail,
+        },
+        data,
+    });
 
-    return NextResponse.json(user);
-    
+    return NextResponse.json(user)
 }
